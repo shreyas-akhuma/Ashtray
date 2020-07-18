@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel = "stylesheet" type = "text/css" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/page.css">
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type = "text/javascript" async></script>
+	<link rel = "stylesheet" href = "https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link href = "https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel = "stylesheet">
+	<title>Ashtray/Books</title>
+</head>
+<body>
+	<nav class = "navbar navbar-custom">
+  		<div class = "container-fluid">
+    		<div class = "navbar-header">
+          		<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#bs-selfmade" aria-expanded = "false">
+            		<i class = "fas fa-bars"></i>
+          		</button>
+      			<a class = "navbar-brand whitewash" href = "/"><i class = "fab fa-buffer whitewash"></i> Ashtray</a>
+   			</div>
+        	<div class = "collapse navbar-collapse" id = "bs-selfmade">
+     			<ul class = "nav navbar-nav navbar-right">
+	          		<li><a href = "#" class = "whitewash">Register</a></li>
+	          		<li><a href = "#" class = "whitewash">Login</a></li>
+          		</ul>
+        	</div>
+  		</div>
+	</nav>
+
+	<div class = "container">
+		<div class = "jumbotron">
+			<p>You can find books by different authors and genres here! If you are an author, upload a cover photo and the pdf file for your works.</p><p>Have fuunnn!</p>
+		</div>
+		<div id="upload-menu">
+			<h3><span class = "plus">+</span>Upload Here</h3>
+			<ul>
+				<li>
+					<form action = "/uploadBook" method = "POST" enctype = "multipart/form-data">
+						<div class = "row">
+							<div class = "col-md-6">
+								<div class = "form-group">
+									<label for = "title">Title</label>
+									<input type = "text" class = "form-control" id = "title" name = "title" placeholder = "eg: Artemis Fowl" required>
+								</div>
+								<div class = "form-group">
+									<label for = "file">Upload Book</label>
+									<input type = "file" id = "file" name = "file" accept = ".pdf" required>
+								</div>
+								<div class = "form-group">
+									<label for = "cover">Upload Cover picture</label>
+									<input type = "file" id = "cover" name = "cover" accept = ".jpg, .png, .bmp" required>
+								</div>
+							</div>
+							<div class = "col-md-6">
+								<div class = "form-group">
+									<label for = "desc">Descripton</label>
+									<textarea class = "form-control" id = "desc" name = "desc" rows = "3" placeholder = "Write something about your work..." required></textarea>
+								</div>
+								<div class = "form-group">
+									<p font-weight = "250">Genre</p>
+								  	<label><input type = "checkbox" name = "genre[]" value = "romance"/> Romance </label>  
+								  	<label><input type = "checkbox" name = "genre[]" value = "mystery"/> Mystery </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "fantasy"/> Fantasy </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "sci-fi"/> Sci-fi </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "thriller"/> Thriller </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "horror"/> Horror </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "young adult" /> Young Adult </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "inspirational"/> Inspirational </label>     
+								  	<label><input type = "checkbox" name = "genre[]" value = "self-help"/> Self-help </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "religious"/> Religious </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "biography"/> Biography </label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "autobiography"/> Autobiography</label>
+								  	<label><input type = "checkbox" name = "genre[]" value = "manga"/> Manga </label>
+									<label><input type = "checkbox" name = "genre[]" value = "webcomics"/> Webcomics </label>
+								</div>
+							</div>
+						</div>
+						<p align = "center"><button type = "submit" class = "btn btn-success">Done</button></p>
+					</form>
+				</li>
+			</ul>
+		</div>
+	</div>
+  
+	<div class = "container-fluid">
+		<h1>Library</h1>
+		<div class = "row text-center" style = "display:flex; flex-wrap: wrap;">
+			<% books.forEach(function(book){ %>
+				<div class = "col-md-2 col-xs-6">
+					<img src = "<%= book.cover %>">
+					<p>
+						<a href = "/book/<%= book._id %>" class = "btn btn-primary">More Info</a>
+					</p>
+				</div>
+			<% }); %>
+		</div>
+	</div>
+
+	<script src = "https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type = "text/javascript">
+		$("#upload-menu h3").click(function () 
+		{
+			//Inner 
+			var jqInner = $(this).next();
+			if (jqInner.is(":visible"))
+			{
+				jqInner.slideUp()
+				$(this).find('span').html('+');
+			}
+			else
+			{
+				jqInner.slideDown()
+				$(this).find('span').html('-');
+			}
+		});
+  </script>
+</body>
+</html>

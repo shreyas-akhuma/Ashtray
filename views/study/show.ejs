@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel = "stylesheet" type = "text/css" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/page.css">
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type = "text/javascript" async></script>
+	<link rel = "stylesheet" href = "https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link href = "https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel = "stylesheet">
+	<title>Ashtray/Study/Show</title>
+</head>
+<body>
+	<nav class = "navbar navbar-custom">
+  		<div class = "container-fluid">
+    		<div class = "navbar-header">
+          		<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#bs-selfmade" aria-expanded = "false">
+            		<i class = "fas fa-bars"></i>
+          		</button>
+      			<a class = "navbar-brand whitewash" href = "/"><i class = "fab fa-buffer whitewash"></i> Ashtray</a>
+   			</div>
+        	<div class = "collapse navbar-collapse" id = "bs-selfmade">
+     			<ul class = "nav navbar-nav navbar-right">
+	          		<li><a href = "#" class = "whitewash">Register</a></li>
+	          		<li><a href = "#" class = "whitewash">Login</a></li>
+          		</ul>
+        	</div>
+  		</div>
+	</nav>
+
+    <div class = "container-fluid">
+        <div class = "panel">
+            <div class = "panel-heading"> Material </div>
+            <div class = "panel-body">
+                <div class = "row text-center" style = "display:flex; flex-wrap: wrap;">
+                    <% files.forEach(function(zip) { %>
+                        <div class = "col-md-2 col-xs-6">
+                            <div class = "thumbnail">
+                                <div class = "caption">
+                                    <h4><%= zip.topic %></h4>
+                                </div>
+                                <% var str = ""; %>
+                                <% if (zip.type.length === 0) { %>
+                                    <% str = "Not mentioned"; %>
+                                <% } else { %>
+                                    <% zip.type.forEach(function(type){ %>
+                                        <% str = str + type + ", "; %>
+                                    <% }); %>
+                                    <% str = str.substring(0, str.length-2); } %>
+                                <p class = "blackie"><strong>By : </strong><%= zip.by %></p>
+                                <p class = "blackie"><strong>Type : </strong><%= str %></p>
+                                <p>
+                                    <a href = "<%= zip.file.substring(8,zip.file.length) %>" class = "btn btn-primary" download>Download zip</a>
+                                </p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script src = "https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

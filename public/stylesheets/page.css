@@ -1,0 +1,134 @@
+body
+{
+	font-family : 'Amaranth', sans-serif;
+	font-size : 155%;
+	background-image : linear-gradient(to right, rgba(76,73,143,0), rgba(76,73,143,1));
+}
+
+h1
+{
+	padding : 1%;
+	text-align : center;
+	color : black;
+	text-shadow : 2px 0 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, -1px 0 0 #fff;
+}
+
+h3
+{
+	cursor : pointer;
+	background : #b52121;
+	padding : 0.75%;
+	text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+ul
+{
+	list-style : none;
+	margin : 0;
+	padding : 0;
+}
+
+label 
+{
+	font-weight : 250;
+}
+
+img
+{
+	width : 80%;
+	height : auto;
+	padding : 2%;
+	margin : 2%;
+	border: 2px solid #555;
+}
+
+select 
+{
+	color : #36454f; 
+}
+
+.blackie
+{
+	color : black;
+}
+
+.whitewash
+{
+	color : white;
+}
+
+.panel > .panel-heading 
+{
+	background-image : none;
+	background-color : #b52121;
+	color : white;
+}
+
+.navbar-custom
+{
+	z-index : 1;
+	background : #4c498f;
+	color : white;
+}
+
+.jumbotron, .panel > .panel-body 
+{
+	background : rgba(76, 73, 143, 0.75);
+	color : white;
+	box-shadow : 0 8px 16px -6px #b52121;
+}
+
+.plus, .jumbotron
+{
+	padding : 1%;
+}
+
+.well
+{
+	background : #b52121;
+	padding : 2.5%;	
+	color : white;
+}
+
+#upload-menu 
+{
+    background : #514e91;
+    width : 100%;
+    color : white;
+    box-shadow : 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px rgba(255, 255, 255, 0.5);
+}
+
+#upload-menu ul 
+{
+    display : none;
+    list-style : none;
+    padding : 1%;
+}
+
+#vertical-menu 
+{
+    background : #514e91;
+    width : 100%;
+    color : white;
+    box-shadow : 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px rgba(255, 255, 255, 0.5);
+}
+
+#vertical-menu ul ul 
+{
+    display : none;
+}
+
+#vertical-menu ul ul li a 
+{
+    color : white;
+    text-decoration : none;
+    line-height : 27px;
+    display : block;
+    padding : 0 15px;
+    transition : all 0.15s;
+}
+
+#vertical-menu ul ul li a:hover 
+{
+    background : #d67ec8;
+}

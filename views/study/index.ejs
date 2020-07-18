@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel = "stylesheet" type = "text/css" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/page.css">
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type = "text/javascript" async></script>
+	<link rel = "stylesheet" href = "https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link href = "https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel = "stylesheet">
+	<title>Ashtray/Study Material</title>
+</head>
+<body>
+	<nav class = "navbar navbar-custom">
+  		<div class = "container-fluid">
+    		<div class = "navbar-header">
+          		<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#bs-selfmade" aria-expanded = "false">
+            		<i class = "fas fa-bars"></i>
+          		</button>
+      			<a class = "navbar-brand whitewash" href = "/"><i class = "fab fa-buffer whitewash"></i> Ashtray</a>
+   			</div>
+        	<div class = "collapse navbar-collapse" id = "bs-selfmade">
+     			<ul class = "nav navbar-nav navbar-right">
+	          		<li><a href = "#" class = "whitewash">Register</a></li>
+	          		<li><a href = "#" class = "whitewash">Login</a></li>
+          		</ul>
+        	</div>
+  		</div>
+	</nav>
+
+	<div class = "container">
+	    <div class = "jumbotron">
+	    	<p>Hello, User! Hope you find our efforts to make study material available in the form of downloadable zip files helpful!</p>
+	    </div>
+	    <div id="upload-menu">
+	    	<h3><span class = "plus">+</span>Upload Here</h3>
+	    	<ul>
+	    		<li>
+	    			<form action = "/uploadStudy" method = "POST" enctype = "multipart/form-data">
+	    				<div class = "row">
+	    					<div class = "col-md-4">
+	    						<div class = "form-group">
+	    							<label for = "topic">Topic Name</label>
+	    							<input type = "text" name = "topic" class = "form-control" id = "topic" placeholder = "eg: Thermodynamics" required>
+	    						</div>
+	    						<div class = "form-group">
+	    							<label for = "by">Name</label>
+	    							<input type = "text" name = "by" class = "form-control" id = "by" placeholder = "Your Name" required>
+	    						</div>
+	    					</div>
+	    					<div class = "col-md-4">
+	    						<div class = "form-group">
+	    							<label for = "zip">Upload zip file</label>
+	    							<input type = "file" id = "zip" name = "zip" accept = ".zip" required>
+	    						</div>
+	    						<div class = "form-group">
+		    						<label>Postgraduate
+		    							<input class = "courseName" type = "radio" name = "grad" value = "post" onclick = "enableSelect(); enableP()" required>
+		    						</label>
+		    						<label>Undergraduate
+		    							<input class = "courseName" type = "radio" name = "grad" value = "under" onclick = "enableSelect(); enableU()">
+		    						</label>
+		    					</div>
+	    						<div class = "form-group">
+	    							<select name = "course" id = "course" disabled required>
+		    							<option class = "misc" disabled selected hidden><---Course---></option>
+		    							<option class = "u" value = "ueng">Engineering</option>
+		    							<option class = "u" value = "umed">Medical</option>
+		    							<option class = "u" value = "udef">Defence & Marine</option>
+		    							<option class = "u" value = "ulaw">Law</option>
+		    							<option class = "u" value = "udes">Design</option>
+		    							<option class = "u" value = "uca">CA</option>
+		    							<option class = "u" value = "uarc">Arch & HM</option>
+		    							<option class = "p" value = "pdef">Defence</option>
+		    							<option class = "p" value = "pmed">Medical</option>
+		    							<option class = "p" value = "pmba">MBA</option>
+		    							<option class = "p" value = "pove">Overseas Univ</option>
+		    							<option class = "p" value = "ptea">MTech ME MA</option>
+		    							<option class = "p" value = "plaw">Law</option>
+		    							<option class = "p" value = "pgov">Government Jobs</option>
+		    						</select>
+		    						<select name = "exam" id = "exam" disabled required>
+		    							<option class = "misc" disabled selected hidden><---Exam---></option>
+		    							<option class = "ueng" value = "mai">JEE Main</option>
+		    							<option class = "ueng" value = "adv">JEE Advanced</option>
+		    							<option class = "umed" value = "nug">NEET - UG</option>
+		    							<option class = "umed" value = "aii">AIIMS</option>
+		    							<option class = "udef" value = "nda">Design</option>
+		    							<option class = "udef" value = "imu">Maritime Univ</option>
+		    							<option class = "uca" value = "cpt">CPT</option>
+		    							<option class = "uca" value = "ipc">IPCC</option>
+		    							<option class = "uca" value = "fin">CA Final</option>
+		    							<option class = "ulaw" value = "ucl">CLAT</option>
+		    							<option class = "ulaw" value = "uls">LSAT</option>
+		    							<option class = "udes" value = "nif">NIFT</option>
+		    							<option class = "udes" value = "nid">NID</option>
+		    							<option class = "uarc" value = "nat">NATA</option>
+		    							<option class = "uarc" value = "nch">NCHMCT JEE</option>
+		    							<option class = "pdef" value = "afc">AFCAT</option>
+		    							<option class = "pdef" value = "cds">UPSC CDS</option>
+		    							<option class = "pmed" value = "npg">NEET - PG</option>
+		    							<option class = "pmed" value = "nmd">NEET - MDS</option>
+		    							<option class = "pmba" value = "cat">CAT</option>
+		    							<option class = "pmba" value = "cma">CMAT</option>
+		    							<option class = "pove" value = "gma">GMAT</option>
+		    							<option class = "pove" value = "gre">GRE</option>
+		    							<option class = "ptea" value = "gat">GATE</option>
+		    							<option class = "ptea" value = "jam">JAM</option>
+		    							<option class = "plaw" value = "pls">LSAT</option>
+		    							<option class = "plaw" value = "pcl">CLAT</option>
+		    							<option class = "pgov" value = "cse">CSE</option>
+		    							<option class = "pgov" value = "ies">UPSC IES</option>
+		    						</select>
+		    					</div>
+	    					</div>
+	    					<div class = "col-md-4">
+	    						<div class = "form-group">
+	    							<p font-weight = "250">What kind of files are included in zip?</p>
+	    							<label><input type = "checkbox" name = "type[]" value = ".pdf"/> PDF </label>  
+	    							<label><input type = "checkbox" name = "type[]" value = ".doc"/> DOC </label>
+	    							<label><input type = "checkbox" name = "type[]" value = ".ppt"/> PPT </label>
+	    							<label><input type = "checkbox" name = "type[]" value = ".odt"/> ODT </label>
+	    							<label><input type = "checkbox" name = "type[]" value = "video"/> Video </label>
+	    							<label><input type = "checkbox" name = "type[]" value = "image"/> Image </label>      
+				                </div>
+				                <p align = "center"><button type = "submit" class = "btn btn-success btn-lg">Done</button></p>
+	    					</div>
+	    				</div>
+	    			</form>
+	    		</li>
+	    	</ul>
+	    </div>
+		<div class = "row">
+			<div class = "col-md-6">
+				<h1> Undergraduate Entrance Exams </h1>
+				<div id="vertical-menu">
+					<ul>
+						<li>
+							<h3><span class = "plus">+</span> Engineering</h3>
+							<ul>
+								<li><a href = "/study/mai">JEE Main : Join Entrance Exam - Main</a></li>
+								<li><a href = "/study/adv">JEE Advanced : Join Entrance Exam - Advanced</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Medical</h3>
+							<ul>
+								<li><a href = "/study/nug">NEET-UG : National Eligibility-cum-Entrance Exam for Undergraduate</a></li>
+								<li><a href = "/study/aii">AIIMS : All India Institute of Medical Sciences</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Defence and Marine</h3>
+							<ul>
+								<li><a href = "/study/nda">NDA Exam</a></li>
+								<li><a href = "/study/imu">Indian Maritime University Common Entrance Test</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Law</h3>
+							<ul>
+								<li><a href = "/study/ucl">CLAT : Common Law Admission Test</a></li>
+								<li><a href = "/study/uls">LSAT : Legal School Admission Test</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Design</h3>
+							<ul>
+								<li><a href = "/study/nif">NIFT Entrance Test : National Institute of Fashion Technology</a></li>
+								<li><a href = "/study/nid">NID : National Institute of Design</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Architecture & Hotel Management</h3>
+							<ul>
+								<li><a href = "/study/nat">NATA : National Aptitude Test in Architecture</a></li>
+								<li><a href = "/study/nch">NCHMCT JEE : National council for Hotel Management and Catering Technology</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<hr>
+				<div id="vertical-menu">
+					<ul>
+						<li>
+							<h3><span class = "plus">+</span> Chartered Accountancy</h3>
+							<ul>
+								<li><a href = "/study/cpt">Common Proficiency Test (CPT)</a></li>
+								<li><a href = "/study/ipc">Integrated Professional Competence Course (IPCC)</a></li>
+								<li><a href = "/study/fin">CA Final</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<hr>
+			</div>
+			<div class = "col-md-6">
+				<h1> Postgraduate Entrance Exams </h1>
+				<div id="vertical-menu">
+					<ul>
+						<li>
+							<h3><span class = "plus">+</span> Defence</h3>
+							<ul>
+								<li><a href = "/study/afc">AFCAT : Air Force Common Admission Test</a></li>
+								<li><a href = "/study/cds">UPSC CDS : Union Public Service Commission Combined Defence Services</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Medical</h3>
+							<ul>
+								<li><a href = "/study/npg">NEET-PG : National Eligibility- cum- Entrance Test for Postgraduates</a></li>
+								<li><a href = "/study/nmd">NEET-MDS</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> MBA</h3>
+							<ul>
+								<li><a href = "/study/cat">Common Admission Test (CAT)</a></li>
+								<li><a href = "/study/cma">Common Management Admission Test (CMAT)</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Overseas Universities</h3>
+							<ul>
+								<li><a href = "/study/gma">Graduate Management Admission Test (GMAT)</a></li>
+								<li><a href = "/study/gre">Graduate Record Examinations (GRE)</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> MTech, ME and MA</h3>
+							<ul>
+								<li><a href = "/study/gat">Graduate Aptitude Test in Engineering (GATE)</a></li>
+								<li><a href = "/study/jam">Joint Admission Test for M.Sc. (JAM)</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Law</h3>
+							<ul>
+								<li><a href = "/study/pls">Law School Admission Test (LSAT) India</a></li>
+								<li><a href = "/study/pcl">Common Law Admission Test (CLAT)</a></li>
+							</ul>
+						</li>
+						<li>
+							<h3><span class = "plus">+</span> Government Jobs</h3>
+							<ul>
+								<li><a href = "/study/cse">Civil Services Examination (CSE)</a></li>
+								<li><a href = "/study/ies">UPSC Indian Engineering Services Exam</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+
+	<script src = "https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type = "text/javascript">
+		$("#vertical-menu h3").click(function () 
+		{
+		    //Inner 
+		    var jqInner = $(this).next();
+		    if (jqInner.is(":visible"))
+		    {
+		        jqInner.slideUp()
+		        $(this).find('span').html('+');
+		    }
+		    else
+		    {
+		        jqInner.slideDown()
+		        $(this).find('span').html('-');
+		    }
+		});
+
+		$("#upload-menu h3").click(function () 
+		{
+		    //Inner 
+		    var jqInner = $(this).next();
+		    if (jqInner.is(":visible"))
+		    {
+		        jqInner.slideUp()
+		        $(this).find('span').html('+');
+		    }
+		    else
+		    {
+		        jqInner.slideDown()
+		        $(this).find('span').html('-');
+		    }
+		});
+
+		function enableSelect() {
+			if ($(".courseName").is(":checked")) {
+				$("#course").prop("disabled", false);
+			}
+		}
+		function enableP() {
+			$(".u").hide();
+			$(".p").show();
+		}
+		function enableU() {
+			$(".p").hide();
+			$(".u").show();
+		}
+		$(document).ready(function(){
+			$("select#course").change(function(){
+				var selection = $(this).children("option:selected").val();
+				$("#exam").prop("disabled", false);
+				if (selection === "ueng") {
+					$(".ueng").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "pgov") {
+					$(".pgov").show();
+					$(".plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca, .ueng").hide();
+				}
+				else if (selection === "plaw") {
+					$(".plaw").show();
+					$(".pgov, .ueng, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "ptea") {
+					$(".ptea").show();
+					$(".pgov, .plaw, .ueng, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "pove") {
+					$(".pove").show();
+					$(".pgov, .plaw, .ptea, .ueng, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "pmba") {
+					$(".pmba").show();
+					$(".pgov, .plaw, .ptea, .pove, .ueng, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "pmed") {
+					$(".pmed").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .ueng, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "pdef") {
+					$(".pdef").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .ueng, .uarc, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "uarc") {
+					$(".uarc").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .ueng, .udes, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "udes") {
+					$(".udes").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .ueng, .ulaw, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "ulaw") {
+					$(".ulaw").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ueng, .udef, .umed, .uca").hide();
+				}
+				else if (selection === "udef") {
+					$(".udef").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .ueng, .umed, .uca").hide();
+				}
+				else if (selection === "umed") {
+					$(".umed").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .ueng, .uca").hide();
+				}
+				else if (selection === "uca") {
+					$(".uca").show();
+					$(".pgov, .plaw, .ptea, .pove, .pmba, .pmed, .pdef, .uarc, .udes, .ulaw, .udef, .umed, .ueng").hide();
+				}
+			});
+		});
+	</script>
+ </body>
+</html>
