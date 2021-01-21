@@ -1,14 +1,14 @@
-const express     = require("express"),
-	  mongoose    = require("mongoose"),
-	  app         = express(),
-	  bodyParser  = require("body-parser"),
-	  multer      = require("multer"),
-	  path        = require("path"),
-	  fs          = require("fs"),
-	  Book        = require("./models/book"),
-	  Comment     = require("./models/comment"),
-	  Study       = require("./models/study"),
-	  studyDest   = "./public/uploads/study";
+const express     = require("express"), 
+      mongoose    = require("mongoose"),
+      app         = express(),
+      bodyParser  = require("body-parser"),
+      multer      = require("multer"),
+      path        = require("path"),
+      fs          = require("fs"),
+      Book        = require("./models/book"),
+      Comment     = require("./models/comment"),
+      Study       = require("./models/study"),
+      studyDest   = "./public/uploads/study";
 
 // SETTING UP STORAGE
 const storageBook = multer.diskStorage({
@@ -98,11 +98,11 @@ app.get("/book", function(req, res) {
 
 app.post("/uploadBook", uploadBook, function(req, res) {
 	var title = req.body.title,
-		file = "/uploads/book/" + req.files.file[0].filename,
-		cover = "/uploads/book/" + req.files.cover[0].filename,
-		genre = req.body.genre,
-		desc = req.body.desc;
-	var	newBook = {title : title, file : file, cover : cover, genre : genre, desc : desc};
+	    file = "/uploads/book/" + req.files.file[0].filename,
+	    cover = "/uploads/book/" + req.files.cover[0].filename,
+	    genre = req.body.genre,
+	    desc = req.body.desc;
+	var newBook = {title : title, file : file, cover : cover, genre : genre, desc : desc};
 	Book.create(newBook, function(err, newlyCreated) {
 		if(err) {
 			console.log(err);
@@ -130,8 +130,8 @@ app.post("/book/:id/comments", function(req, res) {
 			res.redirect("/book/" + book._id);
 		} else {
 			var text = req.body.text,
-				rate = req.body.rate;
-			var	newComment = {text : text, rate : rate};
+			    rate = req.body.rate;
+			var newComment = {text : text, rate : rate};
 			Comment.create(newComment, function(err, comment) {
 				if(err) { 
 					console.log(err);
