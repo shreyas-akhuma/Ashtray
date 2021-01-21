@@ -61,7 +61,7 @@ app.post("/uploadStudy", function(req, res) {
 		var by = req.body.by;
 		var type = req.body.type;
 		fs.renameSync(req.file.path, newZip);
-		var	newStudy = {topic : topic, file : newZip, by : by, type : type};
+		var newStudy = {topic : topic, file : newZip, by : by, type : type};
 		Study.create(newStudy, function(err, newlyCreated) {
 			if(err) {
 				console.log(err);
